@@ -785,7 +785,7 @@ bool venc_dev::venc_set_param(void *paramData, OMX_INDEXTYPE index)
                         return false;
                     }
 
-                    if (!venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_MB, pParam->nSliceHeaderSpacing)) {
+                    if (!venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SLICE_MODE_MAX_MB, pParam->nSliceHeaderSpacing)) {
                         DEBUG_PRINT_ERROR("WARNING: Unsuccessful in updating slice_config");
                         return false;
                     }
@@ -1455,14 +1455,14 @@ bool venc_dev::venc_set_multislice_cfg(OMX_U32 nSlicemode, OMX_U32 nSlicesize)
         nSlicesize = 0;
     }
 
-    if (nSlicemode == V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_MB) {
+    if (nSlicemode == V4L2_MPEG_VIDEO_MULTI_SLICE_MODE_MAX_MB) {
         if (!venc_validate_range(V4L2_CID_MPEG_VIDEO_MULTI_SLICE_MAX_MB, nSlicesize)) {
             DEBUG_PRINT_ERROR("Invalid settings, hardware doesn't support %u as slicesize", nSlicesize);
             return false;
         }
         slice_id = V4L2_CID_MPEG_VIDEO_MULTI_SLICE_MAX_MB;
 
-    } else if (nSlicemode == V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_BYTES) {
+    } else if (nSlicemode == V4L2_MPEG_VIDEO_MULTI_SLICE_MODE_MAX_BYTES) {
         if (!venc_validate_range(V4L2_CID_MPEG_VIDEO_MULTI_SLICE_MAX_BYTES, nSlicesize)) {
             DEBUG_PRINT_ERROR("Invalid settings, hardware doesn't support %u as slicesize", nSlicesize);
             return false;
@@ -1547,7 +1547,7 @@ bool venc_dev::venc_set_error_resilience(OMX_VIDEO_PARAM_ERRORCORRECTIONTYPE* er
         resynchMarkerSpacingBytes = ALIGN(resynchMarkerSpacingBytes, 8) >> 3;
     }
 
-    status = venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_BYTES, resynchMarkerSpacingBytes);
+    status = venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SLICE_MODE_MAX_BYTES, resynchMarkerSpacingBytes);
 
     return status;
 }

@@ -34,14 +34,14 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fcntl.h>
 #include "video_encoder_device_v4l2.h"
 #include "omx_video_encoder.h"
-#include "media/msm_vidc_utils.h"
+#include "vidc_kona/media/msm_vidc_utils.h"
 #ifdef USE_ION
 #include <linux/msm_ion.h>
 #endif
 #include<linux/v4l2-controls.h>
 
 #include <math.h>
-#include <media/msm_media_info.h>
+#include <vidc_kona/media/msm_media_info.h>
 #include <cutils/properties.h>
 #include <media/hardware/HardwareAPI.h>
 
@@ -4005,7 +4005,7 @@ bool venc_dev::reconfigure_avc_param(OMX_VIDEO_PARAM_AVCTYPE *param) {
         DEBUG_PRINT_ERROR("ERROR: Request for setting Inloop filter failed");
         return false;
     }
-    if (!venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_MB, param->nSliceHeaderSpacing)) {
+    if (!venc_set_multislice_cfg(V4L2_MPEG_VIDEO_MULTI_SLICE_MODE_MAX_MB, param->nSliceHeaderSpacing)) {
         DEBUG_PRINT_ERROR("WARNING: Unsuccessful in updating slice_config");
         return false;
     }
