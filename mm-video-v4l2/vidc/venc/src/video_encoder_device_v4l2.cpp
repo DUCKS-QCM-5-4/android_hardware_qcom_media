@@ -34,7 +34,11 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fcntl.h>
 #include "video_encoder_device_v4l2.h"
 #include "omx_video_encoder.h"
-#include "vidc_kona/media/msm_vidc_utils.h"
+#ifdef VIDC_MSMNILE_HEADER
+#include "vidc_gen3meta/media/msm_vidc_utils.h"
+#else
+#include "vidc/media/msm_vidc_utils.h"
+#endif
 #ifdef USE_ION
 #include <linux/msm_ion.h>
 #endif
@@ -42,9 +46,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <math.h>
 #ifdef VIDC_NV12_ALIGN
-#include <vidc_kona/media/msm_media_info_msmnile.h>
+#include <vidc_gen3meta/media/msm_media_info_msmnile.h>
 #else
-#include <vidc_kona/media/msm_media_info.h>
+#include <vidc/media/msm_media_info.h>
 #endif
 #include <cutils/properties.h>
 #include <media/hardware/HardwareAPI.h>

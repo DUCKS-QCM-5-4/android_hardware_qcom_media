@@ -40,9 +40,9 @@
 #include <string.h>
 #include <errno.h>
 #ifdef VIDC_NV12_ALIGN
-#include <vidc_kona/media/msm_media_info_msmnile.h>
+#include <vidc_gen3meta/media/msm_media_info_msmnile.h>
 #else
-#include <vidc_kona/media/msm_media_info.h>
+#include <vidc/media/msm_media_info.h>
 #endif
 #include <gralloc_priv.h>
 #include <unordered_map>

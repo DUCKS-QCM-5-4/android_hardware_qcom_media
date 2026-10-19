@@ -56,9 +56,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "media/hardware/HardwareAPI.h"
 #include <unordered_map>
 #ifdef VIDC_NV12_ALIGN
-#include <vidc_kona/media/msm_media_info_msmnile.h>
+#include <vidc_gen3meta/media/msm_media_info_msmnile.h>
 #else
-#include <vidc_kona/media/msm_media_info.h>
+#include <vidc/media/msm_media_info.h>
 #endif
 #include <OMX_Core.h>
 #include <list>
@@ -124,7 +124,11 @@ extern "C" {
 #include "OMX_VideoExt.h"
 #include "OMX_IndexExt.h"
 #include "qc_omx_component.h"
-#include "vidc_kona/media/msm_vidc_utils.h"
+#ifdef VIDC_MSMNILE_HEADER
+#include "vidc_gen3meta/media/msm_vidc_utils.h"
+#else
+#include "vidc/media/msm_vidc_utils.h"
+#endif
 #include "extra_data_handler.h"
 #include "ts_parser.h"
 #include "vidc_debug.h"
