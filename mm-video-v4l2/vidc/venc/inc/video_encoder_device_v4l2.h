@@ -41,7 +41,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "omx_video_encoder.h"
 #include "vidc_common.h"
 #include <linux/videodev2.h>
-#include "vidc_kona/media/msm_vidc_utils.h"
+#ifdef VIDC_MSMNILE_HEADER
+#include "vidc_gen3meta/media/msm_vidc_utils.h"
+#else
+#include "vidc/media/msm_vidc_utils.h"
+#endif
 #include <poll.h>
 #include <list>
 #include <qdMetaData.h>

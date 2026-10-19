@@ -29,7 +29,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifndef __EXTRA_DATA_HANDLER_H__
 #define __EXTRA_DATA_HANDLER_H__
-#include <vidc_kona/media/msm_vidc_utils.h>
+#ifdef VIDC_MSMNILE_HEADER
+#include "vidc_gen3meta/media/msm_vidc_utils.h"
+#else
+#include "vidc/media/msm_vidc_utils.h"
+#endif
 
 class client_extradata_info {
     private:

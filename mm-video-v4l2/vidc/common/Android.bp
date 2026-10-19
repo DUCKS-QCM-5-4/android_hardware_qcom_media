@@ -16,7 +16,12 @@ cc_library_static {
         "-D_ANDROID_",
         "-D_ANDROID_ICS_",
         "-DUSE_ION",
-    ],
+    ] + select(soong_config_variable("ANDROID", "target_board_platform"), {
+        "msmnile": [
+        "-DVIDC_MSMNILE_HEADER",
+        ],
+        default: [],
+    }),
 
     header_libs: [
         "display_headers",
